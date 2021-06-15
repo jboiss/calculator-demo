@@ -120,10 +120,10 @@ export default class Calculator extends Component
                     <div class="display">
                         <span class="display__text">{state.output.toLocaleString()}</span>
                     </div>
-                    <section class="keypad">
+                    <div class="keypad">
                         {this.keys.map((k) => 
                             <Button press={this.handleInput} keyval={k} />)}
-                    </section>
+                    </div>
                 </div>
             </main>
         );

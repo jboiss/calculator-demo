@@ -23,7 +23,7 @@ export default class extends Component
     render(props, state)
     {
         return(
-            <form class="toggle">
+            <div class="toggle">
                 <div class="toggle__labels">
                     {this.themes.map((k, i) =>
                         <label class="toggle__label" for={k}>{i+1}</label>
@@ -36,7 +36,7 @@ export default class extends Component
                     )}
                     <div class="toggle__ball"></div>
                 </div>
-            </form>
+            </div>
         );
     }
 }

@@ -19,8 +19,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/calculator-app-with-preact-and-scss-v6rXtkiqU)
+- Live Site URL: [Add live site URL here](https://jboiss.github.io/calculator-demo/)
 
 ## My process
 
@@ -31,7 +31,7 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - SASS
-- [Preact](https://preact.org/) - JS library
+- [Preact](https://preactjs.com/) - JS library
 - [Laravel Mix]
 
 
