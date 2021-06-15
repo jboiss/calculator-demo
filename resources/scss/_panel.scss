@@ -1,0 +1,9 @@
+.panel {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: $spacing;
+    user-select: none;
+    font-size: 1.325rem;
+}

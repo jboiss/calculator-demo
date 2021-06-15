@@ -1,0 +1,17 @@
+.display {
+    margin-bottom: $spacing;
+    border-radius: $radius;
+    padding: $spacing;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: $display-font-size;
+    line-height: $display-font-size;
+    height: 85px;
+
+    &__text {
+        padding-top: 6px;
+        vertical-align: middle;
+        line-height: inherit;
+    }
+}

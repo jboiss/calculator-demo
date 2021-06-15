@@ -1,6 +1,9 @@
 function calculate(oplist)
 {
-    console.log(oplist);
+    oplist.reduce((acc, current) => {
+        acc.push(current * current);
+        return acc;
+    }, [])
 }
 
 export default calculate;

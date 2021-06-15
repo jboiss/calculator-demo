@@ -1,0 +1,18 @@
+.button {
+    border: none;
+    border-radius: $radius;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.05s;
+    text-transform: uppercase;
+    user-select: none;
+    font-weight: bold;
+    transition: transform 0.4s;
+    font-size: $number-font-size;
+
+    &:active {
+        position: relative;
+        box-shadow: none !important;
+        transform: scale(0.99) translateY(1px);
+    }
+}

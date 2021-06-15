@@ -1,14 +1,15 @@
 import { h, Fragment, Component } from 'preact';
+import Toggle from './Toggle.jsx';
 import Button from './button.jsx';
-import calculate from './mathutils.js';
 
 export default class Calculator extends Component
 {
+    max_chars = 10;
+
     state = {
-        theme: 1,
-        total: 0,
+        theme: 'theme1',
         input: [],
-        ops: [],
+        output: 0
     };
 
     keys = [
@@ -24,55 +25,106 @@ export default class Calculator extends Component
         super(props);
     }
 
-    reset = (key) =>
+    componentDidMount()
     {
-        this.setState({
-            total: 0,
-            input: [],
-            ops: []
-        }, () => console.log(this.state.input));
+        let theme = localStorage.getItem('theme');
+        if (theme) this.setState({theme: theme});
     }
 
-    del = (key) =>
+    undo = () =>
+    {
+        let undo = [...this.state.input];
+
+        undo.pop();
+
+        this.setState({
+            input: [...undo]
+        }, () => {
+            this.setState({
+                 output: ([...undo].length < 1) ? 0 : [...this.state.input].join(''),
+            })
+        })
+    }
+
+    reset = () =>
     {
         this.setState({
-            input: [...this.state.input].pop()
-        }, () => console.log(this.state.input));
+            input: [],
+            output: 0
+        });
     }
 
     handleInput = (key) =>
     {
         const optable = {
-            '+' : () => calculate(this.state.input),
-            '-' : () => calculate(this.state.input),
-            '/' : () => calculate(this.state.input),
-            'x' : () => calculate(this.state.input),
+            'x'     : () => this.handleInput('*'),
             'Reset' : this.reset,
-            'del'   : this.del
+            'del'   : this.undo,
+            '='     : this.getTotal,
         };
-        
-        if (optable.hasOwnProperty(key)) optable[key]();
+
+        if (optable.hasOwnProperty(key)) {
+            optable[key]();
+            return;
+        }
+
+        // Prevent illegal duplicates
+        const dupes = ['/', '+', '.', '-', '*', 'x'];
+        if (dupes.includes(
+            this.state.input[this.state.input.length-1]) &&
+            dupes.includes(key)
+        ) return;
+
+        if (this.state.input.length >= this.max_chars) return;
 
         this.setState({
-            input: [...this.state.input, key]
+            input: [...this.state.input, key.toString()],
+        }, () =>  this.setState({output: this.state.input.join('')}));
+    }
+
+    getTotal = () =>
+    {
+        if (this.state.input.length < 1) return;
+
+        let total = this.state.total;
+        let op    = this.state.input.join('');
+
+        try {
+            total = eval(op);
+        } catch(error) {
+            return op; 
+        }
+
+        this.setState({
+            input : [total],
+            output: total
+        });
+    }
+
+    setTheme = (theme) =>
+    {
+        this.setState({theme: theme}, () => {
+            localStorage.setItem('theme', theme);
         });
     }
 
     render(props, state)
     {
         return (
-            <main class="theme1">
-                <header class="panel">
-                    calc
-                    <div>theme</div>
-                </header>
-                <main class="display">
-                    {state.total}
-                </main>
-                <section class="keypad">
-                    {this.keys.map((k) => 
-                        <Button press={this.handleInput} keyval={k} />)}
-                </section>
+            <main class={['app', state.theme].join(' ')}>
+                <div class="calculator">
+                    <header class="panel">
+                        <div>calc</div>
+                        <Toggle selected={state.theme} setTheme={this.setTheme} />
+                    </header>
+                    <div class="display">
+                        <span class="display__text">{state.output.toLocaleString()}</span>
+                    </div>
+                    <section class="keypad">
+                        {this.keys.map((k) => 
+                            <Button press={this.handleInput} keyval={k} />)}
+                    </section>
+                </div>
             </main>
         );
     }

@@ -1,0 +1,55 @@
+@media only screen and (max-width: $mobile) {
+    .keypad {
+        display: grid;
+        width: 325px;
+        height: 420px;
+        padding: 24px;
+        border-radius: 10px;
+    }
+
+    .display {
+        border-radius: 10px;
+    }
+
+    .panel {
+        font-size: 2rem;
+    }
+
+    .toggle {
+        &__labels {
+            font-size: 0.7rem;
+        }
+
+        &__stamp {
+            font-size: 0.8rem;
+        }
+
+        &__switch {
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-radius: 14px;
+            display: flex;
+            align-items: space-between;
+            height: 28px;
+            width: 70px;
+        }
+
+        &__control {
+            display: none;
+        }
+
+        &__ball {
+            width: 18px;
+            height: 18px;
+        }
+
+        #theme2:checked ~ &__ball {
+            transform: translateX(22px);
+        }
+        
+        #theme3:checked ~ &__ball {
+            transform: translateX(40px);
+        } 
+    }
+}

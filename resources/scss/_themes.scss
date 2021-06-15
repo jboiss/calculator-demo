@@ -1,0 +1,132 @@
+.theme1 {
+    background: $theme1-main-background;
+    color: $theme1-text;
+
+    .toggle__switch {
+         background: $theme1-keypad-background;
+    }
+
+    .toggle__ball {
+        background: $theme1-key-background-secondary;
+    }
+
+    .keypad {
+        background: $theme1-keypad-background;
+
+        .button {
+            color: $theme1-text-muted;
+            background: $theme1-key-background-primary;
+            box-shadow: 0px 2px 0px $theme1-key-shadow-primary;
+
+            &:last-child {
+                background: $theme1-key-background-secondary;
+                box-shadow: 0px 2px 0px $theme1-key-shadow-secondary;
+                color: $theme1-text;
+            }
+
+            &:nth-child(4),
+            &:nth-last-child(2) {
+                background: $theme1-key-background;
+                box-shadow: 0px 2px 0px $theme1-key-shadow;
+                color: $theme1-text;
+            }
+        }
+    }
+
+    .display {
+        background: $theme1-screen-background;
+    }
+}
+
+.theme2 {
+    background: $theme2-main-background;
+    color: $theme2-text;
+
+    .toggle__switch {
+         background: $theme2-keypad-background;
+    }
+
+    .toggle__ball {
+        background: $theme2-key-background-secondary;
+    }
+
+    .keypad {
+        background: $theme2-keypad-background;
+
+        .button {
+            color: $theme2-text-muted;
+            background: $theme2-key-background-primary;
+            box-shadow: 0px 2px 0px $theme1-key-shadow-primary;
+
+            &:last-child {
+                background: $theme2-key-background-secondary;
+                box-shadow: 0px 2px 0px $theme2-key-shadow-secondary;
+                color: $theme2-text;
+            }
+
+            &:nth-child(4),
+            &:nth-last-child(2) {
+                background: $theme2-key-background;
+                box-shadow: 0px 2px 0px $theme2-key-shadow;
+                color: $theme2-text;
+            }
+        }
+    }
+
+    .display {
+        background: $theme2-screen-background;
+        color: $theme1-text-muted;
+    }
+
+    .panel {
+        color: $theme1-text-muted;
+    }
+}
+
+.theme3 {
+    background: $theme3-main-background;
+    color: $theme3-text;
+
+    .toggle__switch {
+         background: $theme3-keypad-background;
+    }
+
+    .toggle__ball {
+        background: $theme3-cyan;
+    }
+
+    .keypad {
+        background: $theme3-keypad-background;
+
+        .button {
+            color: $theme2-text;
+            background: $theme3-key-background;
+            box-shadow: 0px 2px 0px $theme1-key-shadow;
+
+            &:last-child {
+                background: $theme3-cyan;
+                box-shadow: 0px 2px 0px $theme3-key-shadow-secondary;
+                color: $theme3-main-background;
+            }
+
+            &:nth-child(4),
+            &:nth-last-child(2) {
+                background: $theme3-key-background;
+                box-shadow: 0px 2px 0px $theme3-key-shadow;
+                color: $theme2-text;
+            }
+        }
+    }
+
+    .display {
+        background: $theme3-screen-background;
+    }
+}
+
+.app,
+.toggle__switch,
+.keypad,
+.button,
+.display {
+    transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
+}
